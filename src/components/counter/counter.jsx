@@ -17,7 +17,7 @@ class Counter extends Component{
     render  () { 
         return (
             <div className="Counter">
-              <button onClick={this.increment}>+1</button>
+              <button onClick={this.increment}>+{this.props.by}</button>
               <span className="count">{this.state.counter}</span>
             </div>
           );
@@ -26,7 +26,8 @@ class Counter extends Component{
      // binding is not nessary with arrow fuctions
     increment ()  { // update the state
         this.setState({
-            counter: this.state.counter + 1
+            counter: this.state.counter + this.props.by
+            // counter: this.state.counter + parseInt(this.props.by)
         });
     }
   }
