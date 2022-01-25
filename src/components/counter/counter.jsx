@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import './Counter.css'
 function Counter(){
     return (
       <div className="Counter">
-        third component
+        <button>+1</button>
+        <span className="Counter">0</span>
       </div>
     );
   }

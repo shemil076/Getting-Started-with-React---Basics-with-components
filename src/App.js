@@ -4,7 +4,7 @@ import './App.css';
 import FirstComponent from './components/learingExamples/FirstComponent';
 import SecondComponent from './components/learingExamples/SecondComponent';
 import ThirdComponent from './components/learingExamples/ThirdComponent';
-import Counter from './components/counter/counter';
+import Counter from './components/counter/Counter';
 
 // function App() {
 //   return (
