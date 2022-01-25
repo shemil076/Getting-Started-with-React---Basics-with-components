@@ -4,6 +4,7 @@ import './App.css';
 import FirstComponent from './components/learingExamples/FirstComponent';
 import SecondComponent from './components/learingExamples/SecondComponent';
 import ThirdComponent from './components/learingExamples/ThirdComponent';
+import Counter from './components/counter/counter';
 
 // function App() {
 //   return (
@@ -18,13 +19,14 @@ class App extends Component {
     return (
       <div className="App">
         My hello world
-        <FirstComponent/>
-        <SecondComponent/>
-        <ThirdComponent/>      
+        <Counter/>      
       </div>
     );
   }
 }
+
+
+
 
 
 export default App;
