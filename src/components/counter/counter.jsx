@@ -2,7 +2,23 @@ import React, { Component } from 'react'
 import "./Counter.css";
 import PropTypes from "prop-types";
 
-class Counter extends Component{
+
+class Counter extends Component {
+    render() {
+        return (
+            <div className="Counter">
+                <CounterButton by={1}/>     
+                <CounterButton by={5}/>  
+                <CounterButton by={10}/> 
+            </div>
+        );
+    }
+}
+
+
+
+
+class CounterButton extends Component {
 
     // define the initial state in the constructor
 
@@ -34,12 +50,9 @@ class Counter extends Component{
   }
 
 
-  Counter.defaultProps = {
+  CounterButton.defaultProps = {
       by: 1
   }
 
-  Counter.prototype = {
-      by: PropTypes.number
-  }
 
 export default Counter;
