@@ -17,6 +17,9 @@ class App extends Component {
         My hello world
         <FirstComponet/>
         <SecondComponet/>
+        <ThirdComponet/>
+        <FourthComponet/>
+      
       </div>
     );
   }
@@ -42,6 +45,22 @@ class SecondComponet extends Component {
       </div>
     );
   }
+}
+
+function ThirdComponet(){
+  return (
+    <div className="ThirdComponet">
+      third component
+    </div>
+  );
+}
+
+function FourthComponet() {
+  return (
+    <div className="FourthComponet">
+      This is the fourth component
+    </div>
+  );
 }
 
 export default App;
