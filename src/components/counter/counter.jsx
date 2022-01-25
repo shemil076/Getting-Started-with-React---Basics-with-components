@@ -59,45 +59,16 @@ class Counter extends Component {
 }
 
 class CounterButton extends Component {
-  // define the initial state in the constructor
-
-  constructor() {
-    super();
-    this.state = {
-      counter: 0,
-    };
-
-    this.increment = this.increment.bind(this); // binding is not nessary with arrow fuctions
-    this.decrement = this.decrement.bind(this);
-  }
 
   render() {
     return (
       <div className="Counter">
-        <button onClick={this.increment}>+{this.props.by}</button>
-        <button onClick={this.decrement}>-{this.props.by}</button>
+        <button onClick={() => this.props.incrementMethod(this.props.by)}>+{this.props.by}</button>
+        <button onClick={() => this.props.decrementMethod(this.props.by)}>-{this.props.by}</button>
       </div>
     );
   }
 
-  // binding is not nessary with arrow fuctions
-  increment() {
-    // update the state
-    // this.setState({
-    //     // counter: this.state.counter + this.props.by
-    //     // counter: this.state.counter + parseInt(this.props.by)
-    // });
-    this.props.incrementMethod(this.props.by);
-  }
-
-  decrement() {
-    // update the state
-    // this.setState({
-    //     // counter: this.state.counter + this.props.by
-    //     // counter: this.state.counter + parseInt(this.props.by)
-    // });
-    this.props.decrementMethod(this.props.by);
-  }
 }
 
 CounterButton.defaultProps = {
