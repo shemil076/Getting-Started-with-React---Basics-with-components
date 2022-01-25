@@ -23,14 +23,17 @@ class App extends Component {
         <Counter by="5"/>  
         <Counter by="10"/>   */}
 
+        <Counter />
         <Counter by={1}/>     
         <Counter by={5}/>  
         <Counter by={10}/>  
-
+ 
       </div>
     );
   }
 }
+
+
 
 
 
