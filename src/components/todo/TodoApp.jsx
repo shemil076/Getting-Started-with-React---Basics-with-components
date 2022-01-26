@@ -11,14 +11,14 @@ class TodoApp extends Component {
             <div className="TodoApp">
                 <Router>
                     <HeaderComponent />
-                        <Routes>
-                            <Route path="/" element={<LoginComponentWithNavigation />} />
-                            <Route path="/login" element={<LoginComponentWithNavigation />} />
-                            <Route path="/welcome/:name" element={<WelcomeComponentWithParams />} />
-                            <Route path="/todos" element={<ListToDoComponent />} />
-                            <Route path="/logout" element={<LogoutComponent />} />
-                            <Route path="*" element={<ErrorComponent />} />
-                        </Routes>
+                    <Routes>
+                        <Route path="/" element={<LoginComponentWithNavigation />} />
+                        <Route path="/login" element={<LoginComponentWithNavigation />} />
+                        <Route path="/welcome/:name" element={<WelcomeComponentWithParams />} />
+                        <Route path="/todos" element={<ListToDoComponent />} />
+                        <Route path="/logout" element={<LogoutComponent />} />
+                        <Route path="*" element={<ErrorComponent />} />
+                    </Routes>
                     <FooterComponent />
                 </Router>
 
@@ -66,23 +66,26 @@ class LoginComponent extends Component {
     render() {
         return (
             <div>
-                {this.state.hasLoginFail && <div>Invalid credentials</div>}
-                {this.state.hasLoginSuccess && <div>Login successful</div>}
-                Usser Name :{" "}
-                <input
-                    type="text"
-                    name="username"
-                    value={this.state.username}
-                    onChange={this.handleChange}
-                />
-                Password :{" "}
-                <input
-                    type="password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                />
-                <button onClick={this.loginClicked}>Login</button>
+                <h1>Login</h1>
+                <div className="container">
+                    {this.state.hasLoginFail && <div className="alert-warning">Invalid credentials</div>}
+                    {this.state.hasLoginSuccess && <div>Login successful</div>}
+                    Usser Name :{" "}
+                    <input
+                        type="text"
+                        name="username"
+                        value={this.state.username}
+                        onChange={this.handleChange}
+                    />
+                    Password :{" "}
+                    <input
+                        type="password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                    />
+                    <button className="btn btn-success" onClick={this.loginClicked}>Login</button>
+                </div>
             </div>
         );
     }
@@ -105,29 +108,29 @@ class ListToDoComponent extends Component {
         return (
             <div>
                 <h1>List Todo</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Description</th>
-                            <th>Done</th>
-                            <th>Target date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.state.todos.map(
-                                todos =>
-                                    <tr>
-                                        <td>{todos.id}</td>
-                                        <td>{todos.description}</td>
-                                        <td>{todos.done.toString()}</td>
-                                        <td>{todos.targetDate.toString()}</td>
-                                    </tr>
-                            )
-                        }
-                    </tbody>
-                </table>
+                <div className="container">
+                    <table className="table">
+                        <thead>
+                            <tr>                        
+                                <th>Description</th>
+                                <th>Done</th>
+                                <th>Target date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.state.todos.map(
+                                    todos =>
+                                        <tr>                                            
+                                            <td>{todos.description}</td>
+                                            <td>{todos.done.toString()}</td>
+                                            <td>{todos.targetDate.toString()}</td>
+                                        </tr>
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }
@@ -138,7 +141,13 @@ class WelcomeComponent extends Component {
     render() {
         return (
             <div>
-                Welcome {this.props.params.name}. You can manage your todos <Link to="/todos">here</Link>
+                <h1>welcome</h1>
+
+                <div className="container">
+                    Welcome {this.props.params.name}. You can manage your todos <Link to="/todos">here</Link>
+                </div>
+
+
             </div>
         )
     }
@@ -149,19 +158,19 @@ class WelcomeComponent extends Component {
 class HeaderComponent extends Component {
     render() {
         return (
-           <header>
-               <nav className="navbar navbar-expand-md navbar-dark bg-dark text-white">
-                   <div><a className="navbar-brand">in28minutes</a></div>
-                   <ul className="navbar-nav ">
-                       <li><Link className="nav-link" to="/welcome/in28minutes">Home</Link></li>
-                       <li><Link className="nav-link" to="/todos">Todo</Link></li>
-                   </ul>
-                   <ul className="navbar-nav navbar-collapse justify-content-end ">
-                       <li><Link className="nav-link" to="/login">Login</Link></li>
-                       <li><Link className="nav-link" to="logout">Logout</Link></li>
-                   </ul>
-               </nav>
-           </header>
+            <header>
+                <nav className="navbar navbar-expand-md navbar-dark bg-dark text-white">
+                    <div><a className="navbar-brand">in28minutes</a></div>
+                    <ul className="navbar-nav ">
+                        <li><Link className="nav-link" to="/welcome/in28minutes">Home</Link></li>
+                        <li><Link className="nav-link" to="/todos">Todo</Link></li>
+                    </ul>
+                    <ul className="navbar-nav navbar-collapse justify-content-end ">
+                        <li><Link className="nav-link" to="/login">Login</Link></li>
+                        <li><Link className="nav-link" to="logout">Logout</Link></li>
+                    </ul>
+                </nav>
+            </header>
         )
     }
 }
