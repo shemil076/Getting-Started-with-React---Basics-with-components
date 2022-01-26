@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link} from "react-router-dom";
 import withNavigation from "./WithNavigation";
 import withParams from "./withParams";
 
@@ -90,9 +90,9 @@ class ListToDoComponent extends Component {
         super(props);
         this.state = {
             todos: [
-                { id: 1, description: 'Learn Dance' },
-                { id: 2, description: 'Learn React' },
-                { id: 3, description: 'Visit' }
+                { id: 1, description: 'Learn Dance', done: false, targetDate: new Date()},
+                { id: 2, description: 'Learn React', done: false, targetDate: new Date() },
+                { id: 3, description: 'Visit', done: false, targetDate: new Date()}
             ]
         }
     }
@@ -107,6 +107,8 @@ class ListToDoComponent extends Component {
                         <tr>
                             <th>ID</th>
                             <th>Description</th>
+                            <th>Done</th>
+                            <th>Target date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -116,6 +118,8 @@ class ListToDoComponent extends Component {
                                     <tr>
                                         <td>{todos.id}</td>
                                         <td>{todos.description}</td>
+                                        <td>{todos.done.toString()}</td>
+                                        <td>{todos.targetDate.toString()}</td>
                                     </tr>
                             )
                         }
@@ -129,7 +133,11 @@ class ListToDoComponent extends Component {
 
 class WelcomeComponent extends Component {
     render() {
-        return <div>Welcome {this.props.params.name}</div>;
+        return(
+            <div>
+                Welcome {this.props.params.name}. You can manage your todos <Link to="/todos">here</Link>
+            </div>
+        )
     }
 }
 
