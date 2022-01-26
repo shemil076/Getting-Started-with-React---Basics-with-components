@@ -123,7 +123,7 @@ class ListToDoComponent extends Component {
                             {
                                 this.state.todos.map(
                                     todos =>
-                                        <tr>                                            
+                                        <tr key={todos.id}>                                            
                                             <td>{todos.description}</td>
                                             <td>{todos.done.toString()}</td>
                                             <td>{todos.targetDate.toString()}</td>
@@ -159,17 +159,20 @@ class WelcomeComponent extends Component {
 
 class HeaderComponent extends Component {
     render() {
+
+        const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
+
         return (
             <header>
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark text-white">
                     <div><a className="navbar-brand">in28minutes</a></div>
                     <ul className="navbar-nav ">
-                        <li><Link className="nav-link" to="/welcome/in28minutes">Home</Link></li>
-                        <li><Link className="nav-link" to="/todos">Todo</Link></li>
+                        {isUserLoggedIn && <li><Link className="nav-link" to="/welcome/in28minutes">Home</Link></li>}
+                        {isUserLoggedIn && <li><Link className="nav-link" to="/todos">Todo</Link></li>}
                     </ul>
                     <ul className="navbar-nav navbar-collapse justify-content-end ">
-                        <li><Link className="nav-link" to="/login">Login</Link></li>
-                        <li><Link className="nav-link" to="logout" onClick={AuthenticationService.logOutSuccessfulLogin}>Logout</Link></li>
+                        {!isUserLoggedIn && <li><Link className="nav-link" to="/login">Login</Link></li>}
+                        {isUserLoggedIn && <li><Link className="nav-link" to="logout" onClick={AuthenticationService.logOutSuccessfulLogin}>Logout</Link></li>}
                     </ul>
                 </nav>
             </header>
@@ -205,3 +208,4 @@ function ErrorComponent() {
     return <div>Error Occurred</div>
 }
 export default TodoApp;
+ 
