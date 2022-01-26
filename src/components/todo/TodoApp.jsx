@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Routes, Link} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import withNavigation from "./WithNavigation";
 import withParams from "./withParams";
 
@@ -10,13 +10,15 @@ class TodoApp extends Component {
         return (
             <div className="TodoApp">
                 <Router>
-                    <Routes>
-                        <Route path="/" element={<LoginComponentWithNavigation />} />
-                        <Route path="/login" element={<LoginComponentWithNavigation />} />
-                        <Route path="/welcome/:name" element={<WelcomeComponentWithParams />} />
-                        <Route path="/todos" element={<ListToDoComponent />} />
-                        <Route path="*" element={<ErrorComponent />} />
-                    </Routes>
+                    <HeaderComponent />
+                        <Routes>
+                            <Route path="/" element={<LoginComponentWithNavigation />} />
+                            <Route path="/login" element={<LoginComponentWithNavigation />} />
+                            <Route path="/welcome/:name" element={<WelcomeComponentWithParams />} />
+                            <Route path="/todos" element={<ListToDoComponent />} />
+                            <Route path="*" element={<ErrorComponent />} />
+                        </Routes>
+                    <FooterComponent />
                 </Router>
 
                 {/* <LoginComponent/>
@@ -90,9 +92,9 @@ class ListToDoComponent extends Component {
         super(props);
         this.state = {
             todos: [
-                { id: 1, description: 'Learn Dance', done: false, targetDate: new Date()},
+                { id: 1, description: 'Learn Dance', done: false, targetDate: new Date() },
                 { id: 2, description: 'Learn React', done: false, targetDate: new Date() },
-                { id: 3, description: 'Visit', done: false, targetDate: new Date()}
+                { id: 3, description: 'Visit', done: false, targetDate: new Date() }
             ]
         }
     }
@@ -133,7 +135,7 @@ class ListToDoComponent extends Component {
 
 class WelcomeComponent extends Component {
     render() {
-        return(
+        return (
             <div>
                 Welcome {this.props.params.name}. You can manage your todos <Link to="/todos">here</Link>
             </div>
@@ -141,6 +143,27 @@ class WelcomeComponent extends Component {
     }
 }
 
+
+
+class HeaderComponent extends Component {
+    render() {
+        return (
+            <div>
+                Header <hr />
+            </div>
+        )
+    }
+}
+
+class FooterComponent extends Component {
+    render() {
+        return (
+            <div>
+                <hr /> Footer
+            </div>
+        )
+    }
+}
 
 function ErrorComponent() {
     return <div>Error Occurred</div>
