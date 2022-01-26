@@ -16,6 +16,7 @@ class TodoApp extends Component {
                             <Route path="/login" element={<LoginComponentWithNavigation />} />
                             <Route path="/welcome/:name" element={<WelcomeComponentWithParams />} />
                             <Route path="/todos" element={<ListToDoComponent />} />
+                            <Route path="/logout" element={<LogoutComponent />} />
                             <Route path="*" element={<ErrorComponent />} />
                         </Routes>
                     <FooterComponent />
@@ -168,12 +169,26 @@ class HeaderComponent extends Component {
 class FooterComponent extends Component {
     render() {
         return (
+            <footer className="footer">
+                <span className="text-muted">All Rights Reserved 2022 </span>
+            </footer>
+        )
+    }
+}
+
+class LogoutComponent extends Component {
+    render() {
+        return (
             <div>
-                <hr /> Footer
+                <h1>You are logged out</h1>
+                <div className="container">
+                    Thank you for using our application.
+                </div>
             </div>
         )
     }
 }
+
 
 function ErrorComponent() {
     return <div>Error Occurred</div>
