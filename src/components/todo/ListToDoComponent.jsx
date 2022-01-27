@@ -8,9 +8,9 @@ class ListToDoComponent extends Component {
         super(props);
         this.state = {
             todos: [
-                // { id: 1, description: 'Learn Dance', done: false, targetDate: new Date() },
-                // { id: 2, description: 'Learn React', done: false, targetDate: new Date() },
-                // { id: 3, description: 'Visit', done: false, targetDate: new Date() }
+                // { id: 1, description: 'Learn Dance', isdone: false, targetDate: new Date() },
+                // { id: 2, description: 'Learn React', isdone: false, targetDate: new Date() },
+                // { id: 3, description: 'Visit', isdone: false, targetDate: new Date() }
             ]
         }
     }
@@ -20,6 +20,7 @@ class ListToDoComponent extends Component {
         TodoDataService.retrieveAllTodo(username)
         .then(
             response => {
+                // console.log(response.data)
                 this.setState({
                     todos: response.data
                 })
@@ -60,3 +61,5 @@ class ListToDoComponent extends Component {
 }
 
 export default ListToDoComponent;
+
+// [2].done
