@@ -1,5 +1,6 @@
-package com.in28minutes.rest.webservices.restfulwebservices;
+package com.in28minutes.rest.webservices.restfulwebservices.helloWorld;
 
+import com.in28minutes.rest.webservices.restfulwebservices.HelloWorldBean;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
