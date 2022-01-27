@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TodoDataService from "../../api/todo/TodoDataService.js";
 import AuthenticationService from "./AuthenticationService.js"
+import TodoComponent from "./TodoComponent"
 
 class ListToDoComponent extends Component {
 
@@ -12,6 +13,7 @@ class ListToDoComponent extends Component {
         }
         this.deleteTodoClicked = this.deleteTodoClicked.bind(this)
         this.refreshTodos = this.refreshTodos.bind(this)
+        this.updateTodoClicked = this.updateTodoClicked.bind(this)
     }
 
     componentDidMount(){
@@ -29,6 +31,11 @@ class ListToDoComponent extends Component {
                 })
             }
         )
+    }
+
+    updateTodoClicked(id){
+        console.log(id)
+        this.props.navigate(`/todos/${id}`)
     }
 
     deleteTodoClicked(id){
@@ -59,6 +66,7 @@ class ListToDoComponent extends Component {
                                 <th>Description</th>
                                 <th>Done</th>
                                 <th>Target date</th>
+                                <th>Update</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -70,6 +78,10 @@ class ListToDoComponent extends Component {
                                             <td>{todos.description}</td>
                                             <td>{todos.done.toString()}</td>
                                             <td>{todos.targetDate.toString()}</td>
+                                            <td>
+                                                <button className="btn btn-success"onClick={() => this.updateTodoClicked(todos.id)}>Update</button>
+                                            </td>
+
                                             <td>
                                                 <button className="btn btn-warning" onClick={() => this.deleteTodoClicked(todos.id)}>Delete</button>
                                             </td>
