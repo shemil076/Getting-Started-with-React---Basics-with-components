@@ -8,15 +8,14 @@ public class Todo {
     private String userName;
     private String description;
     private Date targetDate;
-    private boolean isDone;
+    private boolean Done;
 
-
-    public Todo(long id, String userName, String description, Date targetDate, boolean isDone) {
+    public Todo(long id, String userName, String description, Date targetDate, boolean Done) {
         this.id = id;
         this.userName = userName;
         this.description = description;
         this.targetDate = targetDate;
-        this.isDone = isDone;
+        this.Done = Done;
     }
 
     public long getId() {
@@ -51,12 +50,12 @@ public class Todo {
         this.targetDate = targetDate;
     }
 
-    public boolean getIsDone() {
-        return isDone;
+    public boolean getDone() {
+        return Done;
     }
 
-    public void setIsDone(boolean done) {
-        isDone = done;
+    public void setDone(boolean done) {
+        Done = done;
     }
 
     @Override
