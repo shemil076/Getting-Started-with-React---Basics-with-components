@@ -1,8 +1,13 @@
 import axios from "axios";
 class AuthenticationService{
     registerSuccessfulLogin(username, password){
+
+        // let username = 'in28minutes'
+        // let password = 'dummy'
+  
+        let basicAuthHeader = 'Basic ' + window.btoa(username + ':' + password)
         sessionStorage.setItem('authenticatedUser', username);
-        this.setupAxiosInterceptor()
+        this.setupAxiosInterceptor(basicAuthHeader)
     } 
 
     logOutSuccessfulLogin(){
@@ -23,11 +28,7 @@ class AuthenticationService{
 
 
 
-    setupAxiosInterceptor(){
-        let username = 'in28minutes'
-        let password = 'dummy'
-  
-        let basicAuthHeader = 'Basic ' + window.btoa(username + ':' + password)
+    setupAxiosInterceptor(basicAuthHeader){
 
         axios.interceptors.request.use(
             (config) => {
