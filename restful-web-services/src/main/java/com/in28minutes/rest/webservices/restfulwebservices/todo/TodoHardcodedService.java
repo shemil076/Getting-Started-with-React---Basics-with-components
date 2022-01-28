@@ -17,7 +17,7 @@ public class TodoHardcodedService {
         todos.add(new Todo(++idCounter, "in28minutes","Learn to react", new Date(),false));
 
     }
-
+///users/in28minutes/todos/1
     public List<Todo> findAll(){
         return todos;
     }
@@ -34,7 +34,7 @@ public class TodoHardcodedService {
         return null;
     }
 
-    private Todo findById(long id) {
+    public Todo findById(long id) {
         for (Todo todo : todos) {
             if (todo.getId() == id) {
                 return todo;
